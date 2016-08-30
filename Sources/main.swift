@@ -1,4 +1,10 @@
 import Vapor
+#if os(Linux)
+import Glibc
+srandom(UInt32(Date().timeIntervalSinceReferenceDate))
+#endif
+
+
 
 enum TTTError : Error {
     case InvalidRequest

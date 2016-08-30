@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+#if os(Linux)
+import Glibc
+#endif
 
 enum TTTBoardControllerState {
     case started
@@ -268,14 +270,22 @@ extension TTTBoardConfig {
             if (self[TTTBoardPosition(column:1, row: 1)] == .undefined) {
                 return TTTBoardPosition(column:1, row: 1)
             }
+#if os(Linux)
+            let startIndex = Int(random() % 9)
+#else
             let startIndex = Int(arc4random() % 9)
+#endif
             return nextUndefinedPosition(startingAtIndex:startIndex)
         }
         if (self.greenCount == 0) && !selectingRed {
             if (self[TTTBoardPosition(column:1, row: 1)] == .undefined) {
                 return TTTBoardPosition(column:1, row: 1)
             }
+#if os(Linux)
+            let startIndex = Int(random() % 9)
+#else
             let startIndex = Int(arc4random() % 9)
+#endif
             return nextUndefinedPosition(startingAtIndex:startIndex)
         }
         
