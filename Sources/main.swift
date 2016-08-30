@@ -1,7 +1,8 @@
 import Vapor
 #if os(Linux)
 import Glibc
-srandom(UInt32(Date().timeIntervalSinceReferenceDate))
+var t : UnsafeMutablePointer<time_t>? = nil 
+srandom (UInt32(time(t)))
 #endif
 
 
