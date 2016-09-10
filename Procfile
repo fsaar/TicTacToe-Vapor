@@ -1,1 +1,1 @@
-web: ./.build/release/tictactoe-vapor --env=production --workdir="./"
+web: ./.build/release/tictactoe --env=production --workdir="./"
